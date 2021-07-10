@@ -19,13 +19,23 @@
       .bold {font-weight: 700}
       .highlight {border: 3px solid}
       .align {text-align: center}
+      #check-in-div {
+          border: 1px solid;
+          border-radius: 2em;
+          color: black;
+      }
+      #data-in-div {
+          border: 1px solid;
+          border-radius: 2em;
+          color: black;
+      }
       td {padding: 15px}
     </style>
   </head>
   <body>
 
-  <h2>DATABASE CHECK</h2>
-  <h4>RN400_DEVICEINFO</h4>
+  <h3>DATABASE CHECK</h3>
+  <h5>RN400_DEVICEINFO</h5>
   <table class="highlight">
     <thead class="bold">
       <tr>
@@ -87,7 +97,7 @@
   <a class="waves-effect waves-light btn-small" onclick="check_del_device()">truncate</a>
   <br>
 
-  <h4>RN400_REFRIGERRATOR</h4>
+  <h5>RN400_REFRIGERRATOR</h5>
   <table class="highlight">
     <thead class="bold">
       <tr>
@@ -151,8 +161,8 @@
   <br>
 
   <div class="row">
-    <div class="col s6">
-      <h5 class="align">Check-in POST</h5>
+    <div class="col s5" id="check-in-div">
+      <h6 class="align">Check-in POST</h6>
       <form method="post" action="checkin.jsp" id="CHECK-IN">
 
           <div class="row">
@@ -204,14 +214,20 @@
             </div>
           </div>
 
-        <button class="btn waves-effect waves-light" type="submit" form="CHECK-IN">CHECK-IN
-          <i class="material-icons right">send</i>
-        </button>
+          <div class="row">
+              <div class="input-field col s12">
+                <button class="btn waves-effect waves-light" type="submit" form="CHECK-IN">CHECK-IN
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+          </div>
       </form>
     </div>
 
-    <div class="col s6">
-      <h5 class="align">Data-in POST</h5>
+    <div class="col s1"></div>
+
+    <div class="col s5" id="data-in-div">
+      <h6 class="align">Data-in POST</h6>
       <form method="post" action="datain.jsp" id="DATA-IN">
 
           <div class="row">
@@ -270,9 +286,13 @@
             </div>
           </div>
 
-        <button class="btn waves-effect waves-light" type="submit" name="button" form="DATA-IN">DATA-IN
-          <i class="material-icons right">send</i>
-        </button>
+          <div class="row">
+              <div class="input-field col s12">
+                  <button class="btn waves-effect waves-light" type="submit" name="button" form="DATA-IN">DATA-IN
+                      <i class="material-icons right">send</i>
+                  </button>
+              </div>
+          </div>
       </form>
     </div>
   </div>
