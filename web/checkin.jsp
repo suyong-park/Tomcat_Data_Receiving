@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
 <%@ page import = "java.util.regex.*" %>
 <%@ page import = "java.sql.*" %>
@@ -41,20 +42,18 @@
     String splrate = "";
     String interval_value = "";
     String tags[] = null;
-    String xmlResponse = "<xml>";
-    xmlResponse += "<root><ack>";
-    String xmlOk = "ok";
+    String Ok = "ok";
     Boolean macCheck = true;
 
     Map<String, String[]> parameters = request.getParameterMap();
 
     //System.out.println("----------------------------CHECKIN.JSP----------------------------");
-    System.out.println("parameters.keySet() : " + parameters.keySet());
+    //System.out.println("parameters.keySet() : " + parameters.keySet());
 
     for(String key : parameters.keySet()) {
         String value = StringEscapeUtils.escapeHtml(parameters.get(key)[0]);
 
-        System.out.println("value : " + value);
+        //System.out.println("value : " + value);
 
         if (key.toUpperCase().equals("MAC")) {
             if (Pattern.matches("(^[a-zA-Z0-9]*$)", value) == true)
@@ -90,11 +89,12 @@
         }
     }
 
-
+    /*
     System.out.println("macCheck : " + macCheck);
     System.out.println("mac : " + mac);
     System.out.println("model : " + model);
     System.out.println("ip : " + ip);
+     */
 
     if ((macCheck == true) && (!mac.equals("") && mac != null) && (!model.equals("") && model != null) && (!ip.equals("") && ip != null)) {
         try {
@@ -131,23 +131,22 @@
             rs.close();
             st.close();
             con.close();
-        } catch (SQLException se) {
-            xmlOk = "error SQLException";
-            se.printStackTrace();
+        } catch (SQLException e) {
+            Ok = e.getMessage();
+            e.printStackTrace();
         } catch (Exception e) {
-            xmlOk = "error Exception";
+            Ok = e.getMessage();
             e.printStackTrace();
         }
-    } else xmlOk = "No Database error";
-
-    xmlResponse += xmlOk;
-    xmlResponse += "</ack>";
-    xmlResponse += "<timestamp>";
-    xmlResponse += System.currentTimeMillis() / 1000L;
-    xmlResponse += "</timestamp>";
-    xmlResponse += "</root></xml>";
-
-    response.setContentType("text/xml");
-    out.println(xmlResponse);
+    } else Ok = "Insufficient argument value or Inappropriate input or No Database Error";
 %>
-<jsp:forward page="Show_Database.jsp" />
+<script>
+    let is_ok = '<%=Ok%>';
+    let timestamp = + new Date();
+
+    if(is_ok == 'ok')
+        alert("Check-in SUCCESS !\n" + "timestamp : " + timestamp);
+    else
+        alert("Check-in Fail !\n" + "Caused by : " + is_ok + "\n" + "timestamp : " + timestamp);
+    location.href="Show_Database.jsp";
+</script>

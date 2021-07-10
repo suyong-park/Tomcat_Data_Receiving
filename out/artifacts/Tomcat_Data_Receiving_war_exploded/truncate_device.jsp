@@ -9,6 +9,7 @@
 <%@ page import = "java.sql.*" %>
 
 <%
+    boolean is_success;
     try {
         DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
         String url = "jdbc:mysql://localhost:3306/tomcat?serverTimezone=UTC";
@@ -23,15 +24,17 @@
 
         st.executeUpdate(sql);
 
+        is_success = true;
     } catch (SQLException e) {
         e.printStackTrace();
+        is_success = false;
     }
 %>
-<html>
-<head>
-    <title>Truncate</title>
-</head>
-<body>
-<jsp:forward page="Show_Database.jsp" />
-</body>
-</html>
+<script>
+    let is_success = <%=is_success%>;
+    if(is_success)
+        alert("SUCCESS !");
+    else
+        alert("Truncate Fail !");
+    location.href="Show_Database.jsp";
+</script>

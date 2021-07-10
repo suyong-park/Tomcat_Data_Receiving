@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
 <%@ page import = "java.util.regex.*" %>
 <%@ page import = "java.sql.*" %>
@@ -37,9 +38,7 @@
     String sig = "";
     String bat = "";
     String smodel = "";
-    String xmlResponse = "<xml>";
-    xmlResponse += "<root><ack>";
-    String xmlOk = "ok";
+    String Ok = "ok";
     Map<String, String[]> sensorValues = new HashMap<String, String[]>();
     Boolean macCheck = true;
 
@@ -163,24 +162,27 @@
 
                 if (cnt > 0) st.execute(sql);
             }
-            else xmlOk = "No Query error";
+            else Ok = "Error : please check your value.";
 
             rs.close();
             st.close();
             con.close();
-        } catch (SQLException se) {
-            xmlOk = "error SQLException";
-            se.printStackTrace();
+        } catch (SQLException e) {
+            Ok = e.getMessage();
+            e.printStackTrace();
         } catch (Exception e) {
-            xmlOk = "error Exception";
+            Ok = e.getMessage();
+            e.printStackTrace();
         }
-    } else xmlOk = "No Database error";
-
-    xmlResponse += xmlOk;
-    xmlResponse += "</ack>";
-    xmlResponse += "</root></xml>";
-
-    response.setContentType("text/xml");
-    out.println(xmlResponse);
+    } else Ok = "Insufficient argument value or Inappropriate input or No Database Error";
 %>
-<jsp:forward page="Show_Database.jsp" />
+<script>
+    let is_ok = '<%=Ok%>';
+    let timestamp = + new Date();
+
+    if(is_ok == 'ok')
+        alert("Data-in SUCCESS !\n" + "timestamp : " + timestamp);
+    else
+        alert("Data-in Fail !\n" + "Caused by : " + is_ok + "\n" + "timestamp : " + timestamp);
+    location.href="Show_Database.jsp";
+</script>

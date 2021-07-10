@@ -6,11 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
   <head>
     <title>Project</title>
   </head>
   <body>
-<jsp:forward page="Show_Database.jsp" />
+  <jsp:forward page="Show_Database.jsp" />
   </body>
 </html>

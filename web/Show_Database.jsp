@@ -24,7 +24,7 @@
       <td>CH6_TAG_NAME</td>
     </tr>
 <%
-    try {
+  try {
       DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
       String url = "jdbc:mysql://localhost:3306/tomcat?serverTimezone=UTC";
       String userName = "root";
