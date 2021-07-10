@@ -162,7 +162,7 @@
 
                 if (cnt > 0) st.execute(sql);
             }
-            else Ok = "Error : please check your value.";
+            else Ok = "Error ! please check your value.";
 
             rs.close();
             st.close();

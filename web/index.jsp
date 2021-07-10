@@ -12,6 +12,7 @@
     <title>Project</title>
   </head>
   <body>
+  <script>
   <jsp:forward page="Show_Database.jsp" />
   </body>
 </html>

@@ -3,26 +3,46 @@
 
 <html>
   <head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>DATABASE CHECK</title>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+      * {margin-left: 20px;}
+      .bold {font-weight: 700}
+      .highlight {border: 3px solid}
+      .align {text-align: center}
+      td {padding: 15px}
+    </style>
   </head>
   <body>
-  <h1>DATABASE CHECK</h1>
-  <h3>RN400_DEVICEINFO</h3>
-  <table border = "1">
-    <tr align="center">
-      <td>MAC</td>
-      <td>MODEL</td>
-      <td>IP</td>
-      <td>VER</td>
-      <td>SAMPLE_RATE</td>
-      <td>INTERVAL_VALUE</td>
-      <td>CH1_TAG_NAME</td>
-      <td>CH2_TAG_NAME</td>
-      <td>CH3_TAG_NAME</td>
-      <td>CH4_TAG_NAME</td>
-      <td>CH5_TAG_NAME</td>
-      <td>CH6_TAG_NAME</td>
-    </tr>
+
+  <h2>DATABASE CHECK</h2>
+  <h4>RN400_DEVICEINFO</h4>
+  <table class="highlight">
+    <thead class="bold">
+      <tr>
+        <td>MAC</td>
+        <td>MODEL</td>
+        <td>IP</td>
+        <td>VER</td>
+        <td>SAMPLE_RATE</td>
+        <td>INTERVAL_VALUE</td>
+        <td>CH1_TAG_NAME</td>
+        <td>CH2_TAG_NAME</td>
+        <td>CH3_TAG_NAME</td>
+        <td>CH4_TAG_NAME</td>
+        <td>CH5_TAG_NAME</td>
+        <td>CH6_TAG_NAME</td>
+      </tr>
+    </thead>
 <%
   try {
       DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
@@ -43,150 +63,221 @@
 
       while(rs_device.next()) {
 %>
-    <tr>
-      <td><%= rs_device.getString("MAC") %></td>
-      <td><%= rs_device.getString("MODEL") %></td>
-      <td><%= rs_device.getString("IP") %></td>
-      <td><%= rs_device.getString("VER") %></td>
-      <td><%= rs_device.getString("SAMPLE_RATE") %></td>
-      <td><%= rs_device.getString("INTERVAL_VALUE") %></td>
-      <td><%= rs_device.getString("CH1_TAG_NAME") %></td>
-      <td><%= rs_device.getString("CH2_TAG_NAME") %></td>
-      <td><%= rs_device.getString("CH3_TAG_NAME") %></td>
-      <td><%= rs_device.getString("CH4_TAG_NAME") %></td>
-      <td><%= rs_device.getString("CH5_TAG_NAME") %></td>
-      <td><%= rs_device.getString("CH6_TAG_NAME") %></td>
+    <tbody>
+      <tr>
+        <td><%= rs_device.getString("MAC") %></td>
+        <td><%= rs_device.getString("MODEL") %></td>
+        <td><%= rs_device.getString("IP") %></td>
+        <td><%= rs_device.getString("VER") %></td>
+        <td><%= rs_device.getString("SAMPLE_RATE") %></td>
+        <td><%= rs_device.getString("INTERVAL_VALUE") %></td>
+        <td><%= rs_device.getString("CH1_TAG_NAME") %></td>
+        <td><%= rs_device.getString("CH2_TAG_NAME") %></td>
+        <td><%= rs_device.getString("CH3_TAG_NAME") %></td>
+        <td><%= rs_device.getString("CH4_TAG_NAME") %></td>
+        <td><%= rs_device.getString("CH5_TAG_NAME") %></td>
+        <td><%= rs_device.getString("CH6_TAG_NAME") %></td>
 <%
       }
 %>
-    </tr>
+      </tr>
+    </tbody>
   </table>
   <br>
-  <input type="button" name="truncate" value="truncate" onclick="location='truncate_device.jsp'">
+  <a class="waves-effect waves-light btn-small" onclick="check_del_device()">truncate</a>
   <br>
 
-  <h3>RN400_REFRIGERRATOR</h3>
-  <table border = "1">
-    <tr align="center">
-      <td>TIMESTAMP_VALUE</td>
-      <td>MAC</td>
-      <td>MODEL</td>
-      <td>IP</td>
-      <td>SAMPLE_RATE</td>
-      <td>INTERVAL_VALUE</td>
-      <td>WIRELESS_SIGNAL</td>
-      <td>CH1_TAG_NAME</td>
-      <td>CH1_DATE_VALUE</td>
-      <td>CH2_TAG_NAME</td>
-      <td>CH2_DATE_VALUE</td>
-      <td>CH3_TAG_NAME</td>
-      <td>CH3_DATE_VALUE</td>
-      <td>CH4_TAG_NAME</td>
-      <td>CH4_DATE_VALUE</td>
-      <td>CH5_TAG_NAME</td>
-      <td>CH5_DATE_VALUE</td>
-      <td>CH6_TAG_NAME</td>
-      <td>CH6_DATE_VALUE</td>
-      <td>DATETIME</td>
-    </tr>
+  <h4>RN400_REFRIGERRATOR</h4>
+  <table class="highlight">
+    <thead class="bold">
+      <tr>
+        <td>TIMESTAMP_VALUE</td>
+        <td>MAC</td>
+        <td>MODEL</td>
+        <td>IP</td>
+        <td>SAMPLE_RATE</td>
+        <td>INTERVAL_VALUE</td>
+        <td>WIRELESS_SIGNAL</td>
+        <td>CH1_TAG_NAME</td>
+        <td>CH1_DATE_VALUE</td>
+        <td>CH2_TAG_NAME</td>
+        <td>CH2_DATE_VALUE</td>
+        <td>CH3_TAG_NAME</td>
+        <td>CH3_DATE_VALUE</td>
+        <td>CH4_TAG_NAME</td>
+        <td>CH4_DATE_VALUE</td>
+        <td>CH5_TAG_NAME</td>
+        <td>CH5_DATE_VALUE</td>
+        <td>CH6_TAG_NAME</td>
+        <td>CH6_DATE_VALUE</td>
+        <td>DATETIME</td>
+      </tr>
+    </thead>
 <%
     while(rs_refrigerator.next()) {
 %>
-    <tr>
-      <td><%= rs_refrigerator.getString("TIMESTAMP_VALUE") %></td>
-      <td><%= rs_refrigerator.getString("MAC") %></td>
-      <td><%= rs_refrigerator.getString("MODEL") %></td>
-      <td><%= rs_refrigerator.getString("IP") %></td>
-      <td><%= rs_refrigerator.getString("SAMPLE_RATE") %></td>
-      <td><%= rs_refrigerator.getString("INTERVAL_VALUE") %></td>
-      <td><%= rs_refrigerator.getString("WIRELESS_SIGNAL") %></td>
-      <td><%= rs_refrigerator.getString("CH1_TAG_NAME") %></td>
-      <td><%= rs_refrigerator.getString("CH1_DATE_VALUE") %></td>
-      <td><%= rs_refrigerator.getString("CH2_TAG_NAME") %></td>
-      <td><%= rs_refrigerator.getString("CH2_DATE_VALUE") %></td>
-      <td><%= rs_refrigerator.getString("CH3_TAG_NAME") %></td>
-      <td><%= rs_refrigerator.getString("CH3_DATE_VALUE") %></td>
-      <td><%= rs_refrigerator.getString("CH4_TAG_NAME") %></td>
-      <td><%= rs_refrigerator.getString("CH4_DATE_VALUE") %></td>
-      <td><%= rs_refrigerator.getString("CH5_TAG_NAME") %></td>
-      <td><%= rs_refrigerator.getString("CH5_DATE_VALUE") %></td>
-      <td><%= rs_refrigerator.getString("CH6_TAG_NAME") %></td>
-      <td><%= rs_refrigerator.getString("CH6_DATE_VALUE") %></td>
-      <td><%= rs_refrigerator.getString("DATETIME") %></td>
-    </tr>
+    <tbody>
+      <tr>
+        <td><%= rs_refrigerator.getString("TIMESTAMP_VALUE") %></td>
+        <td><%= rs_refrigerator.getString("MAC") %></td>
+        <td><%= rs_refrigerator.getString("MODEL") %></td>
+        <td><%= rs_refrigerator.getString("IP") %></td>
+        <td><%= rs_refrigerator.getString("SAMPLE_RATE") %></td>
+        <td><%= rs_refrigerator.getString("INTERVAL_VALUE") %></td>
+        <td><%= rs_refrigerator.getString("WIRELESS_SIGNAL") %></td>
+        <td><%= rs_refrigerator.getString("CH1_TAG_NAME") %></td>
+        <td><%= rs_refrigerator.getString("CH1_DATE_VALUE") %></td>
+        <td><%= rs_refrigerator.getString("CH2_TAG_NAME") %></td>
+        <td><%= rs_refrigerator.getString("CH2_DATE_VALUE") %></td>
+        <td><%= rs_refrigerator.getString("CH3_TAG_NAME") %></td>
+        <td><%= rs_refrigerator.getString("CH3_DATE_VALUE") %></td>
+        <td><%= rs_refrigerator.getString("CH4_TAG_NAME") %></td>
+        <td><%= rs_refrigerator.getString("CH4_DATE_VALUE") %></td>
+        <td><%= rs_refrigerator.getString("CH5_TAG_NAME") %></td>
+        <td><%= rs_refrigerator.getString("CH5_DATE_VALUE") %></td>
+        <td><%= rs_refrigerator.getString("CH6_TAG_NAME") %></td>
+        <td><%= rs_refrigerator.getString("CH6_DATE_VALUE") %></td>
+        <td><%= rs_refrigerator.getString("DATETIME") %></td>
+      </tr>
+    </tbody>
 <%
     }
 %>
   </table>
   <br>
-  <input type="button" name="truncate" value="truncate" onclick="location='truncate_refri.jsp'">
+  <a class="waves-effect waves-light btn-small" onclick="check_del_refri()">truncate</a>
 
   <br>
   <br>
 
-  <h4>Check-in POST</h4>
-  <form name="checkin" method="post" action="checkin.jsp">
-    <div>
-      <table>
-        <tr align="center">
-          <td>mac</td>
-          <td>ver</td>
-          <td>model</td>
-          <td>ip</td>
-          <td>splrate</td>
-          <td>interval</td>
-          <td>tags</td>
-        </tr>
-        <tr>
-          <td><input type="text" name="mac"></td>
-          <td><input type="text" name="ver"></td>
-          <td><input type="text" name="model"></td>
-          <td><input type="text" name="ip"></td>
-          <td><input type="text" name="splrate"></td>
-          <td><input type="text" name="interval"></td>
-          <td><input type="text" name="tags"></td>
-        </tr>
-      </table>
+  <div class="row">
+    <div class="col s6">
+      <h5 class="align">Check-in POST</h5>
+      <form method="post" action="checkin.jsp" id="CHECK-IN">
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="textarea1_check" type="text" name="mac">
+              <label for="textarea1_check">MAC</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="textarea2_check" type="text" name="ver">
+              <label for="textarea2_check">VER</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="textarea3_check" type="text" name="model">
+              <label for="textarea3_check">MODEL</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="textarea4_check" type="text" name="ip">
+              <label for="textarea4_check">IP</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="textarea5_check" type="text" name="splrate">
+              <label for="textarea5_check">SPLRATE</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="textarea6_check" type="text" name="interval">
+              <label for="textarea6_check">INTERVAL</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="textarea7_check" type="text" name="tags">
+              <label for="textarea7_check">TAGS</label>
+            </div>
+          </div>
+
+        <button class="btn waves-effect waves-light" type="submit" form="CHECK-IN">CHECK-IN
+          <i class="material-icons right">send</i>
+        </button>
+      </form>
     </div>
-    <br>
-    <div>
-      <input type="submit" name="button" value="CHECK-IN">
+
+    <div class="col s6">
+      <h5 class="align">Data-in POST</h5>
+      <form method="post" action="datain.jsp" id="DATA-IN">
+
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea1" class="materialize-textarea" name="mac"></textarea>
+              <label for="textarea1">MAC</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea2" class="materialize-textarea" name="sig"></textarea>
+              <label for="textarea2">SIG</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea3" class="materialize-textarea" name="bat"></textarea>
+              <label for="textarea3">BAT</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea4" class="materialize-textarea" name="volt"></textarea>
+              <label for="textarea4">VOLT</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea5" class="materialize-textarea" name="smodel"></textarea>
+              <label for="textarea5">MODEL</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea6" class="materialize-textarea" name="C000"></textarea>
+              <label for="textarea6">C000</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea7" class="materialize-textarea" name="P000"></textarea>
+              <label for="textarea7">P000</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea8" class="materialize-textarea" name="P001"></textarea>
+              <label for="textarea8">P001</label>
+            </div>
+          </div>
+        
+        <button class="btn waves-effect waves-light" type="submit" name="button" form="DATA-IN">DATA-IN
+          <i class="material-icons right">send</i>
+        </button>
+      </form>
     </div>
-  </form>
+  </div>
 
   <br>
-
-  <h4>Data-in POST</h4>
-  <form name="datain" method="post" action="datain.jsp">
-    <div>
-      <table>
-        <tr align="center">
-          <td>mac</td>
-          <td>sig</td>
-          <td>bat</td>
-          <td>volt</td>
-          <td>model</td>
-          <td>C000</td>
-          <td>P000</td>
-          <td>P001</td>
-        </tr>
-        <tr>
-          <td><input type="text" name="mac"></td>
-          <td><input type="text" name="sig"></td>
-          <td><input type="text" name="bat"></td>
-          <td><input type="text" name="volt"></td>
-          <td><input type="text" name="smodel"></td>
-          <td><input type="text" name="C000"></td>
-          <td><input type="text" name="P000"></td>
-          <td><input type="text" name="P001"></td>
-        </tr>
-      </table>
-    </div>
-    <br>
-    <div>
-      <input type="submit" name="button" value="DATA-IN">
-    </div>
-  </form>
 <%
     rs_device.close();
     st_device.close();
@@ -203,5 +294,20 @@
     e.printStackTrace();
   }
 %>
+  <script>
+    function check_del_device() {
+      if(confirm("Really Delete ?") == true)
+        location='truncate_device.jsp'
+      else
+        return;
+    }
+
+    function check_del_refri() {
+      if(confirm("Really Delete ?") == true)
+        location='truncate_refri.jsp'
+      else
+        return;
+    }
+  </script>
   </body>
 </html>

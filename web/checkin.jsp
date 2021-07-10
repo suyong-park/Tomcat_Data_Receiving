@@ -48,12 +48,12 @@
     Map<String, String[]> parameters = request.getParameterMap();
 
     //System.out.println("----------------------------CHECKIN.JSP----------------------------");
-    //System.out.println("parameters.keySet() : " + parameters.keySet());
+    System.out.println("parameters.keySet() : " + parameters.keySet());
 
     for(String key : parameters.keySet()) {
         String value = StringEscapeUtils.escapeHtml(parameters.get(key)[0]);
 
-        //System.out.println("value : " + value);
+        System.out.println("value : " + value);
 
         if (key.toUpperCase().equals("MAC")) {
             if (Pattern.matches("(^[a-zA-Z0-9]*$)", value) == true)
@@ -89,12 +89,11 @@
         }
     }
 
-    /*
+
     System.out.println("macCheck : " + macCheck);
     System.out.println("mac : " + mac);
     System.out.println("model : " + model);
     System.out.println("ip : " + ip);
-     */
 
     if ((macCheck == true) && (!mac.equals("") && mac != null) && (!model.equals("") && model != null) && (!ip.equals("") && ip != null)) {
         try {
