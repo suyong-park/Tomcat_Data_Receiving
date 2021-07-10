@@ -62,7 +62,9 @@
     </tr>
   </table>
   <br>
+  <input type="button" name="truncate" value="truncate" onclick="location='truncate_device.jsp'">
   <br>
+
   <h3>RN400_REFRIGERRATOR</h3>
   <table border = "1">
     <tr align="center">
@@ -117,58 +119,89 @@
 %>
   </table>
   <br>
+  <input type="button" name="truncate" value="truncate" onclick="location='truncate_refri.jsp'">
+
+  <br>
+  <br>
+
+  <h4>Check-in POST</h4>
+  <form name="checkin" method="post" action="checkin.jsp">
+    <div>
+      <table>
+        <tr align="center">
+          <td>mac</td>
+          <td>ver</td>
+          <td>model</td>
+          <td>ip</td>
+          <td>splrate</td>
+          <td>interval</td>
+          <td>tags</td>
+        </tr>
+        <tr>
+          <td><input type="text" name="mac"></td>
+          <td><input type="text" name="ver"></td>
+          <td><input type="text" name="model"></td>
+          <td><input type="text" name="ip"></td>
+          <td><input type="text" name="splrate"></td>
+          <td><input type="text" name="interval"></td>
+          <td><input type="text" name="tags"></td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <div>
+      <input type="submit" name="button" value="CHECK-IN">
+    </div>
+  </form>
+
+  <br>
+
+  <h4>Data-in POST</h4>
+  <form name="datain" method="post" action="datain.jsp">
+    <div>
+      <table>
+        <tr align="center">
+          <td>mac</td>
+          <td>sig</td>
+          <td>bat</td>
+          <td>volt</td>
+          <td>model</td>
+          <td>C000</td>
+          <td>P000</td>
+          <td>P001</td>
+        </tr>
+        <tr>
+          <td><input type="text" name="mac"></td>
+          <td><input type="text" name="sig"></td>
+          <td><input type="text" name="bat"></td>
+          <td><input type="text" name="volt"></td>
+          <td><input type="text" name="smodel"></td>
+          <td><input type="text" name="C000"></td>
+          <td><input type="text" name="P000"></td>
+          <td><input type="text" name="P001"></td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <div>
+      <input type="submit" name="button" value="DATA-IN">
+    </div>
+  </form>
 <%
     rs_device.close();
     st_device.close();
     rs_refrigerator.close();
     st_refrigerator.close();
+
     con.close();
 
-    } catch (SQLException e) {
-      System.out.println("SQL EXCEPTION");
-      e.printStackTrace();
-    } catch (Exception e) {
-      System.out.println("EXCEPTION");
-      e.printStackTrace();
-    }
+  } catch (SQLException e) {
+    System.out.println("SQL EXCEPTION");
+    e.printStackTrace();
+  } catch (Exception e) {
+    System.out.println("EXCEPTION");
+    e.printStackTrace();
+  }
 %>
-  <br>
-
-  <h4>Checkin POST</h4>
-  <form name="checkin" method="post" action="checkin.jsp">
-    <div>
-      mac : <input type="text" name="mac">
-      ver : <input type="text" name="ver">
-      model : <input type="text" name="model">
-      ip : <input type="text" name="ip">
-      splrate : <input type="text" name="splrate">
-      interval : <input type="text" name="interval">
-      tags : <input type="text" name="tags">
-    </div>
-    <br>
-    <div>
-      <input type="submit" name="확인">
-    </div>
-  </form>
-
-  <br>
-
-  <h4>Datain POST</h4>
-  <form name="datain" method="post" action="datain.jsp">
-    <div>
-      mac : <input type="text" name="mac">
-      sig : <input type="text" name="sig">
-      bat : <input type="text" name="bat">
-      volt : <input type="text" name="volt">
-      model : <input type="text" name="smodel">
-      C000 : <input type="text" name="C000">
-      P000 : <input type="text" name="P000">
-      P001 : <input type="text" name="P001">
-    </div>
-    <br>
-    <div>
-      <input type="submit" name="확인">
-    </div>
-  </form>
   </body>
 </html>

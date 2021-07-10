@@ -183,3 +183,4 @@
     response.setContentType("text/xml");
     out.println(xmlResponse);
 %>
+<jsp:forward page="Show_Database.jsp" />

@@ -49,12 +49,12 @@
     Map<String, String[]> parameters = request.getParameterMap();
 
     //System.out.println("----------------------------CHECKIN.JSP----------------------------");
-    //System.out.println("parameters.keySet() : " + parameters.keySet());
+    System.out.println("parameters.keySet() : " + parameters.keySet());
 
     for(String key : parameters.keySet()) {
         String value = StringEscapeUtils.escapeHtml(parameters.get(key)[0]);
 
-        //System.out.println("value : " + value);
+        System.out.println("value : " + value);
 
         if (key.toUpperCase().equals("MAC")) {
             if (Pattern.matches("(^[a-zA-Z0-9]*$)", value) == true)
@@ -68,7 +68,7 @@
         else if (key.toUpperCase().equals("MODEL")) model = replaceValidParam(value);
         else if (key.toUpperCase().equals("IP")) {
             if (Pattern.matches("([0-9]{1,3})\\.([0-9]{1,3})\\.([0-9]{1,3})\\.([0-9]{1,3})", value) == true) {
-                System.out.println("IP VALUE WHAT ? : " + value);
+                //System.out.println("IP VALUE WHAT ? : " + value);
                 ip = value;
             }
             else {
@@ -90,12 +90,12 @@
         }
     }
 
-    /*
+
     System.out.println("macCheck : " + macCheck);
     System.out.println("mac : " + mac);
     System.out.println("model : " + model);
     System.out.println("ip : " + ip);
-    */
+
     if ((macCheck == true) && (!mac.equals("") && mac != null) && (!model.equals("") && model != null) && (!ip.equals("") && ip != null)) {
         try {
 
@@ -150,3 +150,4 @@
     response.setContentType("text/xml");
     out.println(xmlResponse);
 %>
+<jsp:forward page="Show_Database.jsp" />
