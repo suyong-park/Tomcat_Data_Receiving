@@ -42,6 +42,8 @@
     String splrate = "";
     String interval_value = "";
     String tags[] = null;
+    String xmlResponse = "<xml>";
+    xmlResponse += "<root><ack>";
     String Ok = "ok";
     Boolean macCheck = true;
 
@@ -139,6 +141,16 @@
             e.printStackTrace();
         }
     } else Ok = "Insufficient argument value or Inappropriate input or No Database Error";
+
+    xmlResponse += Ok;
+    xmlResponse += "</ack>";
+    xmlResponse += "<timestamp>";
+    xmlResponse += System.currentTimeMillis() / 1000L;
+    xmlResponse += "</timestamp>";
+    xmlResponse += "</root></xml>";
+
+    response.setContentType("text/xml");
+    out.println(xmlResponse);
 %>
 <script>
     let is_ok = '<%=Ok%>';

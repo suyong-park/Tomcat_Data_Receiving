@@ -38,6 +38,8 @@
     String sig = "";
     String bat = "";
     String smodel = "";
+    String xmlResponse = "<xml>";
+    xmlResponse += "<root><ack>";
     String Ok = "ok";
     Map<String, String[]> sensorValues = new HashMap<String, String[]>();
     Boolean macCheck = true;
@@ -152,7 +154,7 @@
 
                         sql += ", DATE_FORMAT(FROM_UNIXTIME(";
                         sql += timestamp;
-                        sql += "), '%Y-%m-%d %H:%i:%s');";
+                        sql += "), '%Y-%m-%d %H:%i:%s')";
 
                         //System.out.println(sql);
                         cnt++;
@@ -175,6 +177,13 @@
             e.printStackTrace();
         }
     } else Ok = "Insufficient argument value or Inappropriate input or No Database Error";
+
+    xmlResponse += Ok;
+    xmlResponse += "</ack>";
+    xmlResponse += "</root></xml>";
+
+    response.setContentType("text/xml");
+    out.println(xmlResponse);
 %>
 <script>
     let is_ok = '<%=Ok%>';
