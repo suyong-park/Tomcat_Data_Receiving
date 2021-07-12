@@ -36,5 +36,5 @@
         alert("SUCCESS !");
     else
         alert("Truncate Fail !");
-    location.href="Show_Database.jsp";
+    location.href="showDatabase.jsp";
 </script>

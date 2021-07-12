@@ -10,9 +10,9 @@
         <servlet-class>org.apache.axis2.transport.http.AxisServlet</servlet-class>
     </servlet>
     <welcome-file-list>
-        <welcome-file>Show_Database.html</welcome-file>
-        <welcome-file>Show_Database.htm</welcome-file>
-        <welcome-file>Show_Database.jsp</welcome-file>
+        <welcome-file>showDatabase.html</welcome-file>
+        <welcome-file>showDatabase.htm</welcome-file>
+        <welcome-file>showDatabase.jsp</welcome-file>
     </welcome-file-list>
     <!--
     <servlet>

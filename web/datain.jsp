@@ -1,16 +1,15 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: suyong
   Date: 2021/07/07
-  Time: 9:41 ì˜¤ì „
+  Time: 9:41 ¿ÀÀü
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
 <%@ page import = "java.util.regex.*" %>
 <%@ page import = "java.sql.*" %>
-<%@ page import = "javax.sql.*" %>
 <%@ page import = "org.apache.commons.lang.StringEscapeUtils" %>
 <%!
     public String replaceValidParam(String str) {
@@ -184,14 +183,7 @@
 
     response.setContentType("text/xml");
     out.println(xmlResponse);
-%>
-<script>
-    let is_ok = '<%=Ok%>';
-    let timestamp = + new Date();
 
-    if(is_ok == 'ok')
-        alert("Data-in SUCCESS !\n" + "timestamp : " + timestamp);
-    else
-        alert("Data-in Fail !\n" + "Caused by : " + is_ok + "\n" + "timestamp : " + timestamp);
-    location.href="Show_Database.jsp";
-</script>
+    application.setAttribute("is_ok", Ok);
+    pageContext.forward("alert.jsp");
+%>

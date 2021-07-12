@@ -95,7 +95,7 @@
         ResultSet rs_cnt_device = st_cnt_device.executeQuery(sql_cnt_device);
         ResultSet rs_cnt_refrigerator = st_cnt_refrigerator.executeQuery(sql_cnt_refrigerator);
 
-        if(rs_cnt_device.next()) {}
+        if(rs_cnt_device.next());
 %>
     <h5 class="rows_horizontal">RN400_DEVICEINFO</h5>
     Rows : <%= rs_cnt_device.getInt(1) %>
@@ -145,7 +145,7 @@
     <br>
     <br>
 <%
-        if(rs_cnt_refrigerator.next()) {}
+        if(rs_cnt_refrigerator.next());
 %>
     <h5 class="rows_horizontal">RN400_REFRIGERRATOR</h5>
     Rows : <%= rs_cnt_refrigerator.getInt(1) %>
