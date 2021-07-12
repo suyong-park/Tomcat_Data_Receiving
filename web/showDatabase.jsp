@@ -15,15 +15,19 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <style>
-        * {margin-left: 20px;}
+        body {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
         .bold {font-weight: 700}
         .highlight {border: 3px solid}
         .align {text-align: center}
         .row {display: inline-block}
-        .rows_horizontal {display: inline-block}
-        #btn_device {
-            background: white;
-            color: mediumblue;
+        .flex-container {
+            display: flex;
+        }
+        .flex-container > div{
+            margin: 10px;
         }
         #btn_refri {
             background: white;
@@ -32,20 +36,24 @@
         #btn_checkin {
             background: white;
             color: mediumblue;
-            alignment: center;
+            margin-left: 20px;
         }
         #btn_datain {
             background: white;
             color: mediumblue;
-            alignment: center;
+            margin-left: 20px;
         }
-        #btn_go_post {
+        #btn_go_bottom {
             background: white;
             color: mediumblue;
+            width: 60px;
+            height: 60px;
         }
         #btn_go_top {
             background: white;
             color: mediumblue;
+            width: 60px;
+            height: 60px;
         }
         #check-in-div {
             border: 1px solid;
@@ -57,20 +65,24 @@
             border-radius: 2em;
             color: black;
         }
-        #main_title {
-            color: black;
-        }
+        #main_title {color: black}
         #datetime {padding: 20px}
         td {padding: 15px}
-        .horizontal, a {display: inline-block}
     </style>
 </head>
 <body>
     <a name="top">
-        <h3 class="horizontal" id="main_title">DATABASE CHECK RN400 with DEKIST</h3>
+        <h3 id="main_title">DATABASE CHECK RN400 with DEKIST</h3>
     </a>
-    <a class="waves-effect waves-light btn-large" href="#target" id="btn_go_post">BOTTOM</a>
     <br>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let elems = document.querySelectorAll('select');
+            let instances = M.FormSelect.init(elems, options);
+
+            console.log(instances.getSelection());
+        });
+    </script>
 <%
     try {
         DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
@@ -97,8 +109,30 @@
 
         if(rs_cnt_device.next());
 %>
-    <h5 class="rows_horizontal">RN400_DEVICEINFO</h5>
-    Rows : <%= rs_cnt_device.getInt(1) %>
+    <div class="flex-container">
+        <div>
+            <h5 class="rows_horizontal">RN400_DEVICEINFO</h5>
+            Total Rows : <%= rs_cnt_device.getInt(1) %>
+        </div>
+        <div>
+            <label class="rows_horizontal">Show rows</label>
+            <select class="browser-default">
+                <option value="1">10</option>
+                <option value="2">20</option>
+                <option value="3">30</option>
+                <option value="3">40</option>
+                <option value="3">50</option>
+            </select>
+            <!--결국은 jQuery로 받아올 생각 해야할 것 같음-->
+        </div>
+    </div>
+
+    <script>
+        function pagination() {
+
+        }
+    </script>
+
     <table class="highlight">
         <thead class="bold">
             <tr>
@@ -140,15 +174,41 @@
         </tbody>
     </table>
     <br>
-    <a class="waves-effect waves-light btn-small" onclick="check_del_device()" id="btn_device">truncate</a>
 
+    <div>
+        <ul class="pagination">
+            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            <li class="active"><a href="#!">1</a></li>
+            <li class="waves-effect"><a href="#!">2</a></li>
+            <li class="waves-effect"><a href="#!">3</a></li>
+            <li class="waves-effect"><a href="#!">4</a></li>
+            <li class="waves-effect"><a href="#!">5</a></li>
+            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+        </ul>
+        <a class="waves-effect waves-light btn-small" onclick="check_del_device()" id="btn_device">truncate</a>
+    </div>
     <br>
     <br>
 <%
         if(rs_cnt_refrigerator.next());
 %>
-    <h5 class="rows_horizontal">RN400_REFRIGERRATOR</h5>
-    Rows : <%= rs_cnt_refrigerator.getInt(1) %>
+    <div class="flex-container">
+        <div>
+            <h5 class="rows_horizontal">RN400_REFRIGERRATOR</h5>
+            Total Rows : <%= rs_cnt_refrigerator.getInt(1) %>
+        </div>
+        <div>
+            <label class="rows_horizontal">Show rows</label>
+            <select class="browser-default">
+                <option value="1">10</option>
+                <option value="2">20</option>
+                <option value="3">30</option>
+                <option value="3">40</option>
+                <option value="3">50</option>
+            </select>
+        </div>
+    </div>
+
     <table class="highlight">
         <thead class="bold">
             <tr>
@@ -207,12 +267,22 @@
     </table>
     <br>
 
-    <a class="waves-effect waves-light btn-small" onclick="check_del_refri()" id="btn_refri">truncate</a>
-
+    <div>
+        <ul class="pagination">
+            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            <li class="active"><a href="#!">1</a></li>
+            <li class="waves-effect"><a href="#!">2</a></li>
+            <li class="waves-effect"><a href="#!">3</a></li>
+            <li class="waves-effect"><a href="#!">4</a></li>
+            <li class="waves-effect"><a href="#!">5</a></li>
+            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+        </ul>
+        <a class="waves-effect waves-light btn-small" onclick="check_del_refri()" id="btn_refri">truncate</a>
+    </div>
     <br>
     <br>
 
-    <a name="target"/>
+    <a name="bottom"/>
     <div>
         <div id="check-in-div">
             <h6 class="align">Check-in POST</h6>
@@ -345,7 +415,7 @@
             </form>
         </div>
     </div>
-  <br>
+    <br>
 <%
         rs_device.close();
         st_device.close();
@@ -362,8 +432,8 @@
         e.printStackTrace();
         }
 %>
-  <br>
-  <script>
+    <br>
+    <script>
       setTimeout('location.reload()', 600000); // 60 minute reload
       function check_del_device() {
           if(confirm("Really Delete ?") == true)
@@ -378,10 +448,14 @@
           else
               return;
       }
-  </script>
+    </script>
+</body>
 
-  <div style="position: fixed; bottom: 10px; right: 10px;">
-      <a class="btn-floating btn-large waves-effect waves-light" href="#top" id="btn_go_top">TOP</a>
-  </div>
-  </body>
+    <div style="position: fixed; bottom: 80px; right: 17px;">
+        <a class="btn-floating btn-large waves-effect waves-light" href="#top" id="btn_go_top">UP</a>
+    </div>
+    <div style="position: fixed; bottom: 10px; right: 17px;">
+        <a class="btn-floating btn-large waves-effect waves-light" href="#bottom" id="btn_go_bottom">DOWN</a>
+    </div>
+
 </html>
