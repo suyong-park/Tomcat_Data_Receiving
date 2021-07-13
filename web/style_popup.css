@@ -1,0 +1,8 @@
+.align {text-align: center}
+#btn_setup {
+    background: white;
+    color: mediumblue;
+    width: 120px;
+    margin: auto;
+    display: block;
+}

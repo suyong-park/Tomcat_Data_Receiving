@@ -1,0 +1,76 @@
+body {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.bold {font-weight: 700}
+.highlight {border: 3px solid}
+.align {text-align: center}
+.row {display: inline-block}
+.flex-container {
+    display: flex;
+}
+.horizon {display: inline-block}
+.flex-container > div{
+    margin: 10px;
+}
+.row_margin {
+    margin-left: 20px;
+}
+.button_fix_bottom {
+    position: fixed;
+    bottom: 10px;
+    right: 17px;
+}
+.button_fix_top {
+    position: fixed;
+    bottom: 80px;
+    right: 17px;
+}
+#btn_filtering {
+    background: white;
+    color: mediumblue;
+    margin-top: 20px;
+}
+#btn_device {
+    background: white;
+    color: mediumblue;
+}
+#btn_refri {
+    background: white;
+    color: mediumblue;
+}
+#btn_checkin {
+    background: white;
+    color: mediumblue;
+    margin-left: 20px;
+}
+#btn_datain {
+    background: white;
+    color: mediumblue;
+    margin-left: 20px;
+}
+#btn_go_bottom {
+    background: white;
+    color: mediumblue;
+    width: 60px;
+    height: 60px;
+}
+#btn_go_top {
+    background: white;
+    color: mediumblue;
+    width: 60px;
+    height: 60px;
+}
+#check-in-div {
+    border: 1px solid;
+    border-radius: 2em;
+    color: black;
+}
+#data-in-div {
+    border: 1px solid;
+    border-radius: 2em;
+    color: black;
+}
+#main_title {color: black}
+#datetime {padding: 20px}
+td {padding: 15px}

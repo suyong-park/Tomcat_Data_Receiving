@@ -16,71 +16,9 @@
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <style>
-        body {
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-        .bold {font-weight: 700}
-        .highlight {border: 3px solid}
-        .align {text-align: center}
-        .row {display: inline-block}
-        .flex-container {
-            display: flex;
-        }
-        .horizon {display: inline-block}
-        .flex-container > div{
-            margin: 10px;
-        }
-        #btn_filtering {
-            background: white;
-            color: mediumblue;
-            margin-top: 20px;
-        }
-        #btn_device {
-            background: white;
-            color: mediumblue;
-        }
-        #btn_refri {
-            background: white;
-            color: mediumblue;
-        }
-        #btn_checkin {
-            background: white;
-            color: mediumblue;
-            margin-left: 20px;
-        }
-        #btn_datain {
-            background: white;
-            color: mediumblue;
-            margin-left: 20px;
-        }
-        #btn_go_bottom {
-            background: white;
-            color: mediumblue;
-            width: 60px;
-            height: 60px;
-        }
-        #btn_go_top {
-            background: white;
-            color: mediumblue;
-            width: 60px;
-            height: 60px;
-        }
-        #check-in-div {
-            border: 1px solid;
-            border-radius: 2em;
-            color: black;
-        }
-        #data-in-div {
-            border: 1px solid;
-            border-radius: 2em;
-            color: black;
-        }
-        #main_title {color: black}
-        #datetime {padding: 20px}
-        td {padding: 15px}
-    </style>
+
+    <link rel="stylesheet" href="style_main.css">
+
 </head>
 <body>
     <a name="top">
@@ -329,7 +267,7 @@
             <h6 class="align">Check-in POST</h6>
             <form method="post" action="checkin.jsp" id="CHECK-IN">
 
-                <div class="row" style="margin-left: 20px">
+                <div class="row_margin">
                     <div class="input-field col s10">
                         <input id="textarea1_check" type="text" name="mac">
                         <label for="textarea1_check">MAC</label>
@@ -392,7 +330,7 @@
             <h6 class="align">Data-in POST</h6>
             <form method="post" action="datain.jsp" id="DATA-IN">
 
-                <div class="row" style="margin-left: 20px">
+                <div class="row_margin">
                     <div class="input-field col s10">
                         <textarea id="textarea1" class="materialize-textarea" name="mac"></textarea>
                         <label for="textarea1">MAC</label>
@@ -477,10 +415,10 @@
     </script>
 </body>
 
-    <div style="position: fixed; bottom: 80px; right: 17px;">
+    <div class="button_fix_top">
         <a class="btn-floating btn-large waves-effect waves-light" href="#top" id="btn_go_top">UP</a>
     </div>
-    <div style="position: fixed; bottom: 10px; right: 17px;">
+    <div class="button_fix_bottom">
         <a class="btn-floating btn-large waves-effect waves-light" href="#bottom" id="btn_go_bottom">DOWN</a>
     </div>
 
