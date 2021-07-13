@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <title>Filtering</title>
+
+    <style>
+      .align {text-align: center}
+      #btn_setup {
+        background: white;
+        color: mediumblue;
+        width: 120px;
+        margin: auto;
+        display: block;
+      }
+    </style>
+</head>
+<body>
+    <h5 class="align">Setting threshold, transmission & censoring cycle.</h5>
+    <br>
+
+    <form method="post" action="showDatabase.jsp" id="setting_data">
+      <div class="row" style="margin-left: 25px">
+        <div class="input-field col s10">
+          <input id="mac" type="text" name="mac">
+          <label for="mac">MAC</label>
+        </div>
+      </div>
+
+      <div class="row" style="margin-left: 25px">
+        <div class="input-field col s10">
+          <input id="ch1" type="text" name="mac">
+          <label for="ch1">CH1_DATA_VALUE THRESHOLD</label>
+        </div>
+      </div>
+
+      <div class="row" style="margin-left: 25px">
+        <div class="input-field col s10">
+          <input id="ch2" type="text" name="mac">
+          <label for="ch2">CH2_DATA_VALUE THRESHOLD</label>
+        </div>
+      </div>
+
+      <div class="row" style="margin-left: 25px">
+        <div class="input-field col s10">
+          <input id="ch3" type="text" name="mac">
+          <label for="ch3">CH3_DATA_VALUE THRESHOLD</label>
+        </div>
+      </div>
+
+      <div class="row" style="margin-left: 25px">
+        <div class="input-field col s10">
+          <input id="ch4" type="text" name="mac">
+          <label for="ch4">CH4_DATA_VALUE THRESHOLD</label>
+        </div>
+      </div>
+
+      <div class="row" style="margin-left: 25px">
+        <div class="input-field col s10">
+          <input id="ch5" type="text" name="mac">
+          <label for="ch5">CH5_DATA_VALUE THRESHOLD</label>
+        </div>
+      </div>
+
+      <div class="row" style="margin-left: 25px">
+        <div class="input-field col s10">
+          <input id="ch6" type="text" name="mac">
+          <label for="ch6">CH6_DATA_VALUE THRESHOLD</label>
+        </div>
+      </div>
+
+      <div class="row" style="margin-left: 25px">
+        <div class="input-field col s10">
+          <input id="transmission" type="text" name="mac">
+          <label for="transmission">TRANSMISSION CYCLE</label>
+        </div>
+      </div>
+
+      <div class="row" style="margin-left: 25px">
+        <div class="input-field col s10">
+          <input id="censoring" type="text" name="mac">
+          <label for="censoring">CENSORING CYCLE</label>
+        </div>
+      </div>
+
+      <div class="input-field col s10">
+        <button class="btn waves-effect waves-light" type="submit" name="button" form="setting_data" id="btn_setup">SET UP
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </form>
+</body>
+</html>
