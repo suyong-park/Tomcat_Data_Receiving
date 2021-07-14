@@ -1,4 +1,7 @@
 .align {text-align: center}
+.row {
+    margin-left: 25px;
+}
 #btn_setup {
     background: white;
     color: mediumblue;

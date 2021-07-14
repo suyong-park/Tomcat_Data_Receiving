@@ -147,10 +147,5 @@
 
     response.setContentType("text/xml");
     out.println(xmlResponse);
-
-    application.setAttribute("is_ok", Ok);
-    application.setAttribute("timestamp", System.currentTimeMillis() / 1000L);
-    pageContext.forward("alert.jsp");
 %>
-
 

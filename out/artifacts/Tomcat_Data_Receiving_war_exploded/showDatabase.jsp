@@ -67,19 +67,26 @@
         while(rs_mac_name.next()) {
 %>
                 <script>
-                    $('#device_list').append('<option value = "' + <%= rs_mac_name.getString("MAC") %> + '">' + <%= rs_mac_name.getString("MAC") %> + "</option>");
+                    $('#device_list').append('<option value=' + '<%= rs_mac_name.getString("MAC") %>' + '>' + '<%= rs_mac_name.getString("MAC") %>' + '</option>');
                 </script>
 <%
         }
 %>
             </select>
         </div>
+
         <div>
             <button class="btn waves-effect waves-light" type="submit" name="button" id="btn_filtering" onclick="onClick()">FILTERING</button>
             <script>
-                function onClick() {
-                    window.open("popUp.html", "popup-limit", "width=500, height=800, left=600, top=100");
-                }
+
+               function onClick() {
+                   let is_select = $('#device_list option:selected').text();
+
+                   if(is_select == 'Choose device what do you want to see')
+                       alert("Please select model first !");
+                   else
+                       window.open("popUp.html", "popup-limit", "width=500, height=800, left=600, top=100");
+               }
             </script>
         </div>
     </div>
@@ -108,7 +115,7 @@
 
         </script>
         <tbody>
-            <tr>
+            <tr id="table_tr_value">
                 <td><%= rs_device.getString("MAC") %></td>
                 <td><%= rs_device.getString("MODEL") %></td>
                 <td><%= rs_device.getString("IP") %></td>
@@ -267,7 +274,7 @@
             <h6 class="align">Check-in POST</h6>
             <form method="post" action="checkin.jsp" id="CHECK-IN">
 
-                <div class="row_margin">
+                <div class="row">
                     <div class="input-field col s10">
                         <input id="textarea1_check" type="text" name="mac">
                         <label for="textarea1_check">MAC</label>
@@ -330,7 +337,7 @@
             <h6 class="align">Data-in POST</h6>
             <form method="post" action="datain.jsp" id="DATA-IN">
 
-                <div class="row_margin">
+                <div class="row">
                     <div class="input-field col s10">
                         <textarea id="textarea1" class="materialize-textarea" name="mac"></textarea>
                         <label for="textarea1">MAC</label>
@@ -398,21 +405,41 @@
 
     <br>
     <script>
-      setTimeout('location.reload()', 600000); // 60 minute reload
+      setTimeout('location.reload()', 300000); // 30 minute reload
       function check_del_device() {
           if(confirm("Really Delete ?") == true)
-              location='truncate_device.jsp'
+              location.href='truncate_device.jsp'
           else
               return;
       }
 
       function check_del_refri() {
           if(confirm("Really Delete ?") == true)
-              location='truncate_refri.jsp'
+              location.href='truncate_refri.jsp'
           else
               return;
       }
     </script>
+
+<%
+    String filter_ch1 = request.getParameter("ch1");
+    String filter_ch2 = request.getParameter("ch2");
+    String filter_ch3 = request.getParameter("ch3");
+    String filter_ch4 = request.getParameter("ch4");
+    String filter_ch5 = request.getParameter("ch5");
+    String filter_ch6 = request.getParameter("ch6");
+    String filter_transmission = request.getParameter("transmission");
+    String filter_censoring = request.getParameter("censoring");
+
+    System.out.println("ch1 : " + filter_ch1);
+    System.out.println(filter_ch2);
+    System.out.println(filter_ch3);
+    System.out.println(filter_ch4);
+    System.out.println(filter_ch5);
+    System.out.println(filter_ch6);
+    System.out.println(filter_transmission);
+    System.out.println(filter_censoring);
+%>
 </body>
 
     <div class="button_fix_top">

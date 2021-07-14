@@ -1,91 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <meta charset="UTF-8">
-    <title>Filtering</title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+  <meta charset="UTF-8">
+  <title>Set Up</title>
 
   <link rel="stylesheet" href="style_popup.css">
 </head>
 <body>
-    <h5 class="align">Setting threshold, transmission & censoring cycle.</h5>
-    <br>
+<h5 class="align">Setting</h5>
+<br>
 
-    <form method="post" action="showDatabase.jsp" id="setting_data">
-      <div class="row" style="margin-left: 25px">
-        <div class="input-field col s10">
-          <input id="mac" type="text" name="mac">
-          <label for="mac">MAC</label>
-        </div>
-      </div>
+<script>
+  function onPass() {
+    let form_data = $('#setting_data')[0];
+    let is_success;
 
-      <div class="row" style="margin-left: 25px">
-        <div class="input-field col s10">
-          <input id="ch1" type="text" name="mac">
-          <label for="ch1">CH1_DATA_VALUE THRESHOLD</label>
-        </div>
-      </div>
+    console.log(form_data);
+    let data = new FormData(form_data);
+    console.log(data);
+    console.log("----");
 
-      <div class="row" style="margin-left: 25px">
-        <div class="input-field col s10">
-          <input id="ch2" type="text" name="mac">
-          <label for="ch2">CH2_DATA_VALUE THRESHOLD</label>
-        </div>
-      </div>
+    $.ajax({
+      url : 'showDatabase.jsp',
+      type : 'post',
+      data : data,
+      processData: false,
+      contentType: false,
+      cache: false,
+      success: function(json) {
+        console.log(json);
+        is_success = true;
+      },
+      error: function(xhr, status, error){
+        alert("error : " + error);
+        is_success = true;
+      },
+      complete: function () {
+        console.log(is_success);
+        //if(is_success)
+         // window.close();
+      }
+    });
+  }
+</script>
 
-      <div class="row" style="margin-left: 25px">
-        <div class="input-field col s10">
-          <input id="ch3" type="text" name="mac">
-          <label for="ch3">CH3_DATA_VALUE THRESHOLD</label>
-        </div>
-      </div>
+<form method="post" action="showDatabase.jsp" id="setting_data">
+  <div class="row">
+    <div class="input-field col s10">
+      <input disabled value="" id="disabled" type="text" class="validate" name="disabled">
+      <label for="disabled">MAC</label>
+    </div>
+  </div>
 
-      <div class="row" style="margin-left: 25px">
-        <div class="input-field col s10">
-          <input id="ch4" type="text" name="mac">
-          <label for="ch4">CH4_DATA_VALUE THRESHOLD</label>
-        </div>
-      </div>
+  <script>
+    let mac = opener.$('#device_list option:selected').text();
+    $('input[name=disabled]').attr('value', mac);
+  </script>
 
-      <div class="row" style="margin-left: 25px">
-        <div class="input-field col s10">
-          <input id="ch5" type="text" name="mac">
-          <label for="ch5">CH5_DATA_VALUE THRESHOLD</label>
-        </div>
-      </div>
+  <div class="row">
+    <div class="input-field col s10">
+      <input id="ch1" type="text" name="ch1">
+      <label for="ch1">CH1_DATA_VALUE THRESHOLD</label>
+    </div>
+  </div>
 
-      <div class="row" style="margin-left: 25px">
-        <div class="input-field col s10">
-          <input id="ch6" type="text" name="mac">
-          <label for="ch6">CH6_DATA_VALUE THRESHOLD</label>
-        </div>
-      </div>
+  <div class="row">
+    <div class="input-field col s10">
+      <input id="ch2" type="text" name="ch2">
+      <label for="ch2">CH2_DATA_VALUE THRESHOLD</label>
+    </div>
+  </div>
 
-      <div class="row" style="margin-left: 25px">
-        <div class="input-field col s10">
-          <input id="transmission" type="text" name="mac">
-          <label for="transmission">TRANSMISSION CYCLE</label>
-        </div>
-      </div>
+  <div class="row">
+    <div class="input-field col s10">
+      <input id="ch3" type="text" name="ch3">
+      <label for="ch3">CH3_DATA_VALUE THRESHOLD</label>
+    </div>
+  </div>
 
-      <div class="row" style="margin-left: 25px">
-        <div class="input-field col s10">
-          <input id="censoring" type="text" name="mac">
-          <label for="censoring">CENSORING CYCLE</label>
-        </div>
-      </div>
+  <div class="row">
+    <div class="input-field col s10">
+      <input id="ch4" type="text" name="ch4">
+      <label for="ch4">CH4_DATA_VALUE THRESHOLD</label>
+    </div>
+  </div>
 
-      <div class="input-field col s10">
-        <button class="btn waves-effect waves-light" type="submit" name="button" form="setting_data" id="btn_setup">SET UP
-          <i class="material-icons right">send</i>
-        </button>
-      </div>
-    </form>
+  <div class="row">
+    <div class="input-field col s10">
+      <input id="ch5" type="text" name="ch5">
+      <label for="ch5">CH5_DATA_VALUE THRESHOLD</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s10">
+      <input id="ch6" type="text" name="ch6">
+      <label for="ch6">CH6_DATA_VALUE THRESHOLD</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s10">
+      <input id="transmission" type="text" name="transmission">
+      <label for="transmission">TRANSMISSION CYCLE</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s10">
+      <input id="censoring" type="text" name="censoring">
+      <label for="censoring">CENSORING CYCLE</label>
+    </div>
+  </div>
+
+  <div class="input-field col s10">
+    <button class="btn waves-effect waves-light" type="submit" name="button" form="setting_data" id="btn_setup" onclick="onPass()">SET UP
+      <i class="material-icons right">send</i>
+    </button>
+  </div>
+</form>
 </body>
 </html>
