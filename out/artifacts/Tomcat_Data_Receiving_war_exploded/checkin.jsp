@@ -130,13 +130,13 @@
             st.close();
             con.close();
         } catch (SQLException e) {
-            Ok = e.getMessage();
+            Ok = "error";
             e.printStackTrace();
         } catch (Exception e) {
-            Ok = e.getMessage();
+            Ok = "error";
             e.printStackTrace();
         }
-    } else Ok = "Insufficient argument value or Inappropriate input or No Database Error";
+    } else Ok = "error";
 
     xmlResponse += Ok;
     xmlResponse += "</ack>";

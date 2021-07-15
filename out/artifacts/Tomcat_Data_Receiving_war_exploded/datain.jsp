@@ -163,16 +163,16 @@
 
                 if (cnt > 0) st.execute(sql);
             }
-            else Ok = "Error ! please check your value.";
+            else Ok = "error";
 
             rs.close();
             st.close();
             con.close();
         } catch (SQLException e) {
-            Ok = e.getMessage();
+            Ok = "error";
             e.printStackTrace();
         } catch (Exception e) {
-            Ok = e.getMessage();
+            Ok = "error";
             e.printStackTrace();
         }
     } else Ok = "Insufficient argument value or Inappropriate input or No Database Error";
