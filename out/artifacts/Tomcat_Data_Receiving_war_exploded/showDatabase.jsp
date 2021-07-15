@@ -115,7 +115,7 @@
 
         </script>
         <tbody>
-            <tr id="table_tr_value">
+            <tr>
                 <td><%= rs_device.getString("MAC") %></td>
                 <td><%= rs_device.getString("MODEL") %></td>
                 <td><%= rs_device.getString("IP") %></td>
@@ -422,6 +422,7 @@
     </script>
 
 <%
+    /*
     String filter_ch1 = request.getParameter("ch1");
     String filter_ch2 = request.getParameter("ch2");
     String filter_ch3 = request.getParameter("ch3");
@@ -439,6 +440,8 @@
     System.out.println(filter_ch6);
     System.out.println(filter_transmission);
     System.out.println(filter_censoring);
+
+     */
 %>
 </body>
 
