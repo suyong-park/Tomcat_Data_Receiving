@@ -33,3 +33,5 @@ you can select model what do you want to see.
 This is pop up page. you can insert your data, thereby, you can see data if that over the limits.
 <img width="501" alt="popup" src="https://user-images.githubusercontent.com/54859580/125442824-cf133641-fd8e-4f31-b691-de7770893a73.png">
 
+### This Project will be using companys that use RN400 device. This code will help you manage your RN400 device data.
+
